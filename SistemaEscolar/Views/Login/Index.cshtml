@@ -1,0 +1,31 @@
+﻿@model SistemaEscolar.Models.Usuario
+
+@Styles.Render("~/Content/css")
+
+@{
+    Layout = null;
+}
+
+<div> @ViewBag.Message</div>
+<div class="login container">
+
+    <div class="login-container">
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="login__wrap">
+                @Html.Label("Ingrese su Correo", new { @class = "login__lbl-mail" })
+                @Html.TextBoxFor(u => u.CorreoUsuario, new { @class = "Login__txt-mail" })
+            </div>
+            <div class="login__wrap">
+                @Html.Label("Ingrese su contrasena", new { @class = "login__lbl-password" })
+                @Html.PasswordFor(u => u.ContrasenaUsuario, new { @class = "login__txt-password" })
+            </div>
+            <div class="login__wrap">
+                <input type="submit" name="name" value="Entrar" class="login__submit" />
+            </div>
+        }
+    </div>
+</div>

@@ -1,0 +1,95 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Mi aplicación ASP.NET</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <header class="header">
+        <div class="header__brand">
+            @{
+                int tipoUsuario = Convert.ToInt32(Session["TipoUsuario"]);
+            }
+
+            @if (@Session["TipoUsuario"] != null)
+            {
+
+                if (tipoUsuario == 1)
+                {
+                    @Html.ActionLink("Control Escolar", "Index", "Estudiante", new { area = "" }, new { @class = "header__name-brand link" })
+
+                }
+                else
+                {
+                    @Html.ActionLink("Control Escolar", "Index", "Profesor", new { area = "" }, new { @class = "header__name-brand link" })
+
+                }
+            }
+        </div>
+        <div class="header__content">
+            <div class="header__author">
+                @if (Session["Nombreusuario"] != null)
+                {
+                    <h4 class="header__author-Name">@Session["Nombreusuario"]</h4>
+                }
+            </div>
+            <div class="header__icon iconomenu-lateral">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+        </div>
+        <div class="menu-lateral">
+            <nav class="nav">
+                <ul class="header__list list">
+                    @if (@Session["TipoUsuario"] != null && !string.IsNullOrEmpty(Session["TipoUsuario"].ToString()))
+                    {
+
+                        if (tipoUsuario == 1)
+                        {
+                            <li class="list__li">@Html.ActionLink("Inicio", "Index", "Estudiante", null, new { @class = "link link--menu-list" })</li>
+                        }
+                        else
+                        {
+                            <li class="list__li">@Html.ActionLink("Inicio", "Index", "Profesor", null, new { @class = "link link--menu-list" })</li>
+                        }
+
+                    }
+                    <li class="list__li">@Html.ActionLink("Profesores", "ListadoProfesores", "Profesor", null, new { @class = "link link--menu-list" })</li>
+                    <li class="list__li">@Html.ActionLink("Estudiantes", "FiltrarEstudiante", "Estudiante", null, new { @class = "link link--menu-list" })</li>
+
+
+                    @if (@Session["TipoUsuario"] != null && !string.IsNullOrEmpty(Session["TipoUsuario"].ToString()))
+                    {
+                        if (tipoUsuario == 1)
+                        {
+                            <li class="list__li">@Html.ActionLink("Salir", "CerrarSesion", "Estudiante", null, new { @class = "link link--menu-list" })</li>
+
+                        }
+                        else
+                        {
+                            <li class="list__li">@Html.ActionLink("Salir", "CerrarSesion", "Profesor", null, new { @class = "link link--menu-list" })</li>
+                        }
+
+                    }
+
+
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <div class="body-content">
+        @RenderBody()
+
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Mi aplicación ASP.NET</p>
+        </footer>
+    </div>
+    <script src="https://kit.fontawesome.com/ca6b9ed282.js"></script>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/main")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

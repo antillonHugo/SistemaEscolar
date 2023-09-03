@@ -1,0 +1,44 @@
+﻿@model List<SistemaEscolar.ViewModels.EstudianteViewModel>
+
+@{
+    ViewBag.Title = "ListadoEstudiantes";
+}
+
+<div class="categoria">
+    <div class="categoria__titulo">
+        Listado de Estudiantes
+    </div>
+</div>
+
+<div class="registro">
+    <div class="registro__buscador container">
+        <div class="registro__contenedor-bars cursor-pointer iconomenu-lateral">
+            <i class="fa-solid fa-bars registro-icono__bars"></i>
+        </div>
+
+        <div class="registro-cajatexto">
+            <input type="text" name="name" value="" class="registro-cajatexto__input registro-cajatexto__input--estudiante" placeholder="Buscar Estudiantes" />
+            <i class="fa-solid fa-magnifying-glass registro-cajatexto__icono"></i>
+        </div>
+    </div>
+
+    @Html.Partial("_data")
+</div>
+
+<div class="menu-lateral menu-lateral--estudiante">
+    <nav class="nav">
+        <div class="nav__seccion">
+            <button class="nav__boton-agregar">Agregar Estudiante</button>
+            @*<a href="@Url.Action("AgregarEstudiante", "Estudiante")" class="nav__boton-agregar">Agregar Estudiante</a>*@
+        </div>
+        <ul class="list">
+            <li class="list__li"><a href="@Url.Action("ListadoEstudiantes", "Estudiante")" class="link link--menu-list">Todos</a></li>
+            <li class="list__li"><a href="@Url.Action("ListadoEstudiantes", "Estudiante")" class="link link--menu-list">Carrera</a></li>
+            <li class="list__li"><a href="@Url.Action("ListadoEstudiantes", "Estudiante")" class="link link--menu-list">Facultad</a></li>
+            <li class="list__li"><a href="@Url.Action("ListadoEstudiantes", "Estudiante")" class="link link--menu-list">Materia</a></li>
+        </ul>
+    </nav>
+</div> 
+
+
+

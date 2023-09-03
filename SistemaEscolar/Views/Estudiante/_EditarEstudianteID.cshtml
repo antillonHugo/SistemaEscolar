@@ -1,0 +1,86 @@
+﻿@model List<SistemaEscolar.ViewModels.EstudianteViewModel>
+
+@{
+    Layout = null;
+    var resultado = (IEnumerable<SistemaEscolar.Models.TipoUsuario>)ViewBag.Message;
+}
+
+<div class="registro-detalles">
+    <header class="registro-detalle__cabecera">
+        <div class="detalle">
+            <button class="detalle__boton">Atrás</button>
+        </div>
+        <div class="detalle container container--detalles">
+            <p class="detalle__categoria">Detalles del Estudiante</p>
+
+            <div class="detalle__iconos">
+                <a href="#" class="detalle__eliminar"><i class="fa-solid fa-trash"></i></a>
+            </div>
+        </div>
+    </header>
+
+
+    @using (Html.BeginForm("ActualizarEstudiante", "Estudiante", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="registro-detalle__datos">
+
+            @Html.HiddenFor(model => Model[0].IdEstudiante)
+            @Html.HiddenFor(model => Model[0].IdUsuario)
+
+            <div class="dato-contenedor">
+                <label class="dato-contenedor__titulo">Nombre</label>
+                <label class="dato-contenedor__modelo">@Html.TextBoxFor(model => Model[0].NombreEstudiante, new { @class = "registro__caja-texto" })</label>
+            </div>
+            <div class="dato-contenedor">
+                <label class="dato-contenedor__titulo">Apellido</label>
+                <label class="dato-contenedor__modelo">@Html.TextBoxFor(model => Model[0].ApellidoEstudiante, new { @class = "registro__caja-texto" })</label>
+            </div>
+            <div class="dato-contenedor">
+                <label class="dato-contenedor__titulo">Correo</label>
+                <label class="dato-contenedor__modelo">@Html.TextBoxFor(model => Model[0].CorreoUsuario, new { @class = "registro__caja-texto" })</label>
+            </div>
+            <div class="dato-contenedor">
+                <label class="dato-contenedor__titulo">Tipo de Usuario</label>
+                @Html.DropDownListFor(model => Model[0].IdTipoUsuario, new SelectList(resultado, "IdTipoUsuario", "TipoUsuarios"), Model[0].TipoUsuario)
+            </div>
+
+        </div>
+
+        <div class="registro-detalle__materias">
+            <table class="tabla">
+                <tr class="tabla__fila">
+                    <th class="tabla__encabezado">Materia</th>
+                    <th class="tabla__encabezado">Evaluación 1</th>
+                    <th class="tabla__encabezado">Evaluación 2</th>
+                    <th class="tabla__encabezado">Evaluación 3</th>
+                    <th class="tabla__encabezado">Evaluación 4</th>
+                    <th class="tabla__encabezado">Evaluación 5</th>
+                    <th class="tabla__encabezado">Promedio</th>
+                </tr>
+                @for (int i = 0; i < Model.Count; i++)
+                {
+                    <tr class="tabla__fila">
+
+                        @Html.HiddenFor(model => model[i].IdMateria)
+                        @Html.HiddenFor(model => model[i].IdNota)
+
+                        <td class="tabla__columna tabla__columna--materias">@Html.DisplayFor(model => model[i].NombreMateria, new { @class = "tabla__caja-texto" })</td>
+                        <td class="tabla__columna">@Html.TextBoxFor(model => model[i].Evaluacion1, new { @class = "tabla__caja-texto", DataFormatString = "{0:0.00}" })</td>
+                        <td class="tabla__columna">@Html.TextBoxFor(model => model[i].Evaluacion2, new { @class = "tabla__caja-texto", DataFormatString = "{0:0.00}" })</td>
+                        <td class="tabla__columna">@Html.TextBoxFor(model => model[i].Evaluacion3, new { @class = "tabla__caja-texto", DataFormatString = "{0:0.00}" })</td>
+                        <td class="tabla__columna">@Html.TextBoxFor(model => model[i].Evaluacion4, new { @class = "tabla__caja-texto", DataFormatString = "{0:0.00}" })</td>
+                        <td class="tabla__columna">@Html.TextBoxFor(model => model[i].Evaluacion5, new { @class = "tabla__caja-texto", DataFormatString = "{0:0.00}" })</td>
+                        <td class="tabla__columna">@Html.DisplayFor(model => model[i].Promedio, new { htmlAttributes = new { @class = "tabla__caja-texto" }, DataFormatString = "{0:0.00}" })</td>
+
+                    </tr>
+                }
+            </table>
+        </div>
+
+        <input type="submit" value="Guardar Cambio" class="registro__boton-actualizar cursor-pointer" />
+
+    }
+
+</div>

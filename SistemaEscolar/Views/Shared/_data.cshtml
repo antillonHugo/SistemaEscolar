@@ -1,0 +1,40 @@
+﻿@model List<SistemaEscolar.ViewModels.EstudianteViewModel>
+
+@{
+    int currentStudent = 0;
+}
+
+@if (Model.Count > 0)
+{
+
+    <div class="registro__lectura">
+        @foreach (var estudiante in Model)
+        {
+
+            if (currentStudent != estudiante.IdEstudiante)
+            {
+                currentStudent = estudiante.IdEstudiante;
+
+                <div class="datos container container--datos cursor-pointer" data-id="@estudiante.IdEstudiante">
+                    <div class="datos__detalles">
+                        <div class="datos__titulo">@Html.DisplayFor(model => estudiante.NombreEstudiante)</div>
+                        <div class="datos__subtitulo">@Html.DisplayFor(model => estudiante.CorreoUsuario)</div>
+                    </div>
+                    <div class="datos__acciones">
+                        @*<a href="@Url.Action("EditarEstudiantesID","Estudiante", new { idestudiante = estudiante.IdEstudiante })" class="link-datos"><i class="fa-solid fa-pen-to-square informacion__icono"></i></a>*@
+                        <a href="@Url.Action("EliminarEstudiantesID","Estudiante", new { idestudiante = estudiante.IdEstudiante })" class="link-datos"><i class="fa-solid fa-trash informacion__icono"></i></a>
+                    </div>
+                </div>
+            }
+
+        }
+        <div class="registro__id"></div>
+    </div>
+
+
+}
+else
+{
+    <h4 class="registro__nulo">No se encuentran Registros</h4>
+}
+

@@ -1,0 +1,21 @@
+﻿@model SistemaEscolar.ViewModels.EstudianteViewModel
+@Styles.Render("~/Content/css")
+
+<div class="modal__contenido" style="border:3px solid red">
+    <div class="formulario">
+
+        <div class="formulario-grupo">
+            @Html.LabelFor(model => model.NombreEstudiante, htmlAttributes: new { @class = "formulario-grupo__label" })
+            @Html.EditorFor(model => model.NombreEstudiante, new { htmlAttributes = new { @class = "formulario-grupo__input" } })
+        </div>
+        <div class="formulario-grupo">
+            @Html.LabelFor(model => model.ApellidoEstudiante, htmlAttributes: new { @class = "formulario-grupo__label" })
+            @Html.EditorFor(model => model.ApellidoEstudiante, new { htmlAttributes = new { @class = "formulario-grupo__input" } })
+        </div>
+        <div class="formulario-grupo">
+            @Html.LabelFor(model => model.CorreoUsuario, htmlAttributes: new { @class = "formulario-grupo__label" })
+            @Html.EditorFor(model => model.CorreoUsuario, new { htmlAttributes = new { @class = "formulario-grupo__input" } })
+        </div>
+
+    </div>
+</div>

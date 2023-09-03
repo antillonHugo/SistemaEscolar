@@ -1,0 +1,498 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Poppins:wght@100;200;300;700&family=Roboto:ital,wght@0,400;1,900&family=Source+Sans+Pro:wght@300;700&display=swap');
+
+/*
+fuentes a utilizar
+font-family: 'Caveat', cursive;
+font-family: 'Poppins', sans-serif;
+font-family: 'Roboto', sans-serif;
+font-family: 'Source Sans Pro', sans-serif;
+*/
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container--datos, .container--detalles {
+    justify-content: space-between;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+/*estilos para los elementos del login*/
+.login {
+    height: 100vh;
+    width: 100%;
+}
+
+.login-container {
+    margin: 3rem;
+    border: .8px solid #cccc;
+}
+
+.login__wrap {
+    padding: 1rem;
+}
+
+.Login__txt-mail, .login__txt-password {
+    border: none;
+    outline: none;
+    border-bottom: 1px solid;
+}
+
+.Login__txt-mail:hover, .login__txt-password:hover {
+    outline: none;
+    background-color: transparent;
+}
+
+.login__submit {
+    padding: 1rem;
+    width: 100%;
+    background-color: rgba(1, 86, 104,.5);
+    border: none;
+    color: white;
+    border-radius: 6px;
+}
+
+.login__submit:hover {
+    cursor: pointer;
+}
+
+/*Estilos para las listas*/
+.list__li {
+    list-style: none;
+}
+
+/*Estilos para los enlaces*/
+.link {
+    text-decoration: none;
+    padding: 1rem;
+    display: block;
+    color: black;
+}
+
+.link--datos {
+    padding: 0;
+}
+
+/*Estilos para los menus laterales*/
+.menu-lateral {
+    display: none;
+}
+
+.menu-lateral--estudiante {
+    top: 4.5rem;
+}
+
+.menu-lateral_Show {
+    width: 100vw;
+    height: 100vh;
+    display: block;
+    background-color: rgba(77, 77, 77,0.5);
+    position: fixed;
+}
+
+.nav {
+    background-color: white;
+    width: 50vw;
+    height: 100%;
+}
+
+/*Estilos para el header*/
+.header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    position: absolute;
+    z-index: 1;
+    width:100%;
+    background-color: rgb(255,221,77);
+}
+
+.header__name-brand {
+    position: relative;
+}
+
+.header__content {
+    display: inline-flex;
+    align-items: center;
+}
+
+.header__author, .header__icon {
+    padding: 0 1rem;
+}
+
+.header__icon:hover {
+    cursor: pointer;
+}
+
+.list__li:hover {
+    background-color: rgba(1, 86, 104,.5);
+}
+
+.link--menu-list:hover {
+    color: white;
+}
+
+/*Estilos para el body de la pagina*/
+.body-content {
+   padding-top:4.5rem;
+}
+
+/*Estilos para las tarjetas del area del profesor*/
+.contenedor-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
+    grid-gap: 15px;
+    padding:.8rem;
+}
+
+.tarjeta {
+    border: 1px solid #cccc;
+    border-radius: 8px;
+}
+
+.tarjeta__enlace {
+    text-align: center;
+}
+
+.tarjeta__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/*Estilos genericos para las secciones de Estudiante, profesor, carreras etc..*/
+.categoria {
+    background-color: rgb(107, 114, 142);
+    border-radius: 8px;
+    margin: 1rem .5rem 1rem .5rem;
+}
+
+.categoria__titulo {
+    color: white;
+    padding: 2rem 1rem;
+    font-size: clamp(1rem, 1.2rem, 1.8rem);
+}
+
+/*Estilos para las tarjetas del los reistros de estudiantes, profesores etc...*/
+.registro {
+    margin: 0 .5rem;
+}
+
+.registro__buscador{
+    margin-top:2rem;
+}
+
+.datos {
+    padding: .5rem 0;
+    margin: .5rem 0;
+}
+
+.datos:hover {
+    background-color: rgba(39, 40, 41,.2);
+    transition:1.5s ease;
+}
+
+.datos__detalles{
+    width:60%;
+}
+
+.datos__titulo {
+    font-size: clamp(22px, 22px, 1rem);
+    font-weight:bold;
+}
+
+.link-datos{
+    text-decoration:none;
+    color:black;
+    margin:0 2px;
+}
+
+.informacion__icono {
+    padding: 0 .5rem;
+    pointer-events: none;
+}
+
+.registro-cajatexto__input {
+    padding: .5rem;
+    width: 80%;
+}
+
+.registro__contenedor-bars {
+    border-radius: 50%;
+    background-color: black;
+}
+
+.registro-icono__bars {
+    color: white;
+    padding: .5rem;
+}
+
+.registro-cajatexto{
+    padding:0 1rem;
+    width:100%;
+}
+
+.registro__nulo {
+    font-size: clamp(1rem, 1.5rem, 2rem);
+    text-align:center;
+    padding:5rem 0;
+}
+
+.registro__id {
+    transition: .5s ease;
+    transform: translateX(500px);
+    position: fixed;
+    top: 0;
+    background-color: white;
+    height: 100vh;
+    width: 100vw;
+    padding: 3rem 0 3rem .5rem;
+    overflow: hidden;
+}
+
+.registro__id-mostrar {
+    transition: .5s ease;
+    transform: translateX(0);
+}
+
+/*Estilos del contenedor que permiten mostrar los detalles de cada registro estudiante vista _BusquedasstudiantesID*/
+.registro-detalles {
+    overflow: hidden;
+}
+
+.detalle{
+    padding:1rem .5rem;
+}
+
+.detalle__iconos{
+    padding:0 1rem;
+}
+
+.detalle__boton {
+    all: unset;
+    border: 1px solid #cccc;
+    padding: 1rem 2rem;
+    border-radius: 10px;
+    cursor: pointer;
+    color:white;
+    background-color: rgb(107, 114, 142);
+}
+
+.detalle__boton:hover {
+    background-color: rgba(107, 114, 142,0.8);
+}
+
+.detalle__editar, .detalle__eliminar{
+    padding:1rem;
+    text-decoration:none;
+    color:black;
+}
+
+.iconos {
+    pointer-events: none;
+}
+
+.registro-detalle__datos {
+   /*overflow-x: auto;*/ /* Agrega un scroll horizontal cuando sea necesario */
+    /*white-space: nowrap;*/ /* Evita que los elementos se dividan en varias líneas */
+    /* Ajusta el tamaño máximo y otros estilos según tus necesidades */
+    /*height: 35vh;*/
+    /*background-color:blue;*/
+}
+
+.registro-detalle__materias {
+    padding: 2rem 0 0 0;
+    max-width: 90%;
+    overflow-x:auto;
+}
+
+.dato-contenedor {
+    padding: .5rem;
+    display: flex;
+}
+
+.dato-contenedor__titulo {
+    font-weight: bold;
+    width:40%;
+}
+
+.registro-detalle__materias {
+    width: 100%; /* Ancho del contenedor principal */
+}
+
+.registro__caja-texto {
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #cccc;
+}
+
+.registro__boton-actualizar {
+    margin-top:1rem;
+    border: none;
+    padding: 1rem;
+    border-radius: 3px;
+    color: white;
+    background-color: rgba(1, 86, 104,.5);
+    transition: 1s ease;
+}
+
+.registro__boton-actualizar:hover {
+   scale:1.1;
+   transition:1s ease;
+}
+
+.tabla__encabezado {
+    padding:.8rem 2rem;
+    background-color: #cccc;
+    color: rgb(64, 66, 88);
+    white-space: nowrap;
+}
+
+.tabla__columna {
+    text-align: center;
+    white-space: nowrap;
+}
+
+.tabla__columna--materias {
+    text-align: left;
+}
+
+
+.tabla__caja-texto {
+    text-align: center;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #cccc;
+}
+
+/*Estilos para el menú lateral de la sección Estudiantes*/
+.nav__seccion {
+    padding: 1rem 0;
+    text-align: center;
+}
+
+.nav__boton-agregar {
+    background-color: rgb(107, 114, 142);
+    color:white;
+    border-radius: 6px;
+    padding: 1rem 2rem;
+    border:none;
+}
+
+.modal__contenido {
+    background-color: black;
+}
+
+.formulario {
+    background-color: white;
+}
+
+/*Estilos para el formulario de los filtros*/
+.filtros {
+    border: 1px solid #cccc;
+}
+
+.filtro__carrera {
+    border: 1px solid black;
+}
+
+
+.modal{
+    display:none;
+}
+/*Media Querys*/
+@media screen and (min-width:320px) {
+    body {
+        /*background-color:red;*/
+    }
+}
+
+@media screen and (min-width:480px) {
+    body {
+        /*background-color: green;*/
+    }
+
+
+    /*estilos para los elementos del login*/
+    .login__wrap {
+        padding: 1rem;
+    }
+
+    /*Estilos para menú lateral derecho ellipse cual muestra los detalles de los estudiantes, carrera, materias etc*/
+   /* .registro__id {
+        transition: .5s ease;
+        transform: translateX(600px);
+    }
+
+    .registro__id-mostrar {
+        transition: .5s ease;
+        transform: translateX(0);
+    }*/
+
+
+    /*.login {
+        height: 100vh;
+        width: 100%;
+    }
+
+    .login-container {
+        margin: 3rem;
+        border: .8px solid #cccc;
+    }
+
+    .login__wrap {
+        padding: 1rem;
+    }
+
+    .Login__txt-mail, .login__txt-password {
+        border: none;
+        outline: none;
+        border-bottom: 1px solid;
+    }
+
+        .Login__txt-mail:hover, .login__txt-password:hover {
+            outline: none;
+            background-color: transparent;
+        }
+
+    .login__submit {
+        padding: .5rem;
+        width: 100%;
+        background-color: rgba(1, 86, 104,.5);
+        border: none;
+        color: white;
+    }
+
+    .login__submit:hover {
+        cursor: pointer;
+    }*/
+}
+
+@media screen and (min-width:768px) {
+    body {
+        /*background-color: deeppink;*/
+    }
+}
+
+@media screen and (min-width:960px) {
+}
+
+@media screen and (min-width:1024px) {
+}
+
+@media screen and (min-width:1328px) {
+}
