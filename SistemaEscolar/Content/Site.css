@@ -424,16 +424,43 @@ body {
     border: 1px solid black;
 }
 
-
 .modal{
     display:none;
 }
 
+/**Panel de usuarios**/
+.credenciales{
+
+}
+
+.credenciales__tipousuario {
+    font-weight: bold;
+    font-size: 25px;
+}
+
+.credenciales__wrapper {
+    padding: 1rem;
+}
+
+.credenciales__contrasena {
+    color: red;
+    font-size: 20px;
+}
+
+.credenciales__usuario {
+    font-size: 20px;
+    color: #61677A;
+    font-weight:700;
+}
+
+.credenciales__correousuario {
+    color: #19376D;
+}
 /*Estilos para los mensajes de manteniento*/
-.mensaje-mantenimiento{
-    font-size:1.5rem;
-    text-align:center;
-    padding-top:6rem;
+.mensaje-mantenimiento {
+    font-size: 1.5rem;
+    text-align: center;
+    padding-top: 6rem;
 }
 
 /*Media Querys*/
