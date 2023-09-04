@@ -282,7 +282,7 @@ body {
 }
 
 .registro-detalle__datos{
-
+ 
 }
 
 .registros-datos__estudiante {
@@ -494,50 +494,13 @@ body {
         padding: 10rem 1rem;
     }
     
-    /*estilos para los elementos del login*/
-   /* .login {
-        height: 100vh;
-        width: 100%;
-    }*/
-
     .login__cajas{
         padding:.5rem;
     }
 
     .login-container {
-        /*margin: 3rem;*/
         padding: 3rem;
     }
-/*
-    .login__wrap {
-        padding: 1rem;
-        display: flex;
-        justify-content: space-between;
-    }
-
-    .Login__txt-mail, .login__txt-password {
-        border: none;
-        outline: none;
-        border-bottom: 1px solid;
-    }
-
-        .Login__txt-mail:hover, .login__txt-password:hover {
-            outline: none;
-            background-color: transparent;
-        }
-
-    .login__submit {
-        padding: 1rem;
-        width: 100%;
-        background-color: rgba(1, 86, 104,.5);
-        border: none;
-        color: white;
-        border-radius: 6px;
-    }
-
-        .login__submit:hover {
-            cursor: pointer;
-        }*/
 
 }
 
@@ -563,7 +526,7 @@ body {
         position: static;
         padding:0;
         position:relative;
-        top:-13rem;
+        top:-30rem;
         left:17rem;
         width:65vw;
         height:auto;
@@ -615,7 +578,7 @@ body {
     /*Estilos para las tarjetas del los reistros de estudiantes, profesores etc...*/
 
     .registro__id {
-        top: -12rem;
+        top: -27rem;
         left: 22rem;
         width: 61vw;
     }
