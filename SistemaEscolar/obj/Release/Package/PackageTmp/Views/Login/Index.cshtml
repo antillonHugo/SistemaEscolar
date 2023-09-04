@@ -1,0 +1,65 @@
+﻿@model SistemaEscolar.Models.Usuario
+
+@Styles.Render("~/Content/css")
+
+@{
+    Layout = null;
+}
+
+<div class="login container">
+
+    <div class="credenciales">
+        <div class="credenciales__wrapper">
+            <p class="credenciales__tipousuario">Panel Administrador</p>
+            <div class="credenciales__usuario">
+                <span class="credenciales__usuario">Correo:</span>
+                <span class="credenciales__correousuario">Hugo@gmail.com</span>
+            </div>
+            <div class="credenciales__usuario">
+                <span class="credenciales__usuario">Contraseña</span>
+                <span class="credenciales__contrasena">12345</span>
+            </div>
+
+        </div>
+        <div class="credenciales__wrapper">
+            <p class="credenciales__tipousuario">Panel Estudiante</p>
+            <div class="credenciales__usuario">
+                <span class="credenciales__usuario">Correo:</span>
+                <span class="credenciales__correousuario">Juan@gmail.com</span>
+            </div>
+            <div class="credenciales__usuario">
+                <span class="credenciales__usuario">Contraseña</span>
+                <span class="credenciales__contrasena">12345</span>
+            </div>
+        </div>
+    </div>
+    <div class="mensaje-mantenimiento">@ViewBag.Message</div>
+    <div class="login-container">
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="login__wrap">
+                <div class="login__cajas">
+                    @Html.Label("Ingrese su Correo", new { @class = "login__lbl-mail" })
+                </div>
+                <div class="login__cajas">
+                    @Html.TextBoxFor(u => u.CorreoUsuario, new { @class = "Login__txt-mail" })
+                </div>
+            </div>
+            <div class="login__wrap">
+                <div class="login__cajas">
+                    @Html.Label("Ingrese su contrasena", new { @class = "login__lbl-password" })
+                </div>
+                <div class="login__cajas">
+                    @Html.PasswordFor(u => u.ContrasenaUsuario, new { @class = "login__txt-password" })
+                </div>
+            </div>
+            <div class="login__wrap">
+                <input type="submit" name="name" value="Entrar" class="login__submit" />
+            </div>
+        }
+    </div>
+
+</div>

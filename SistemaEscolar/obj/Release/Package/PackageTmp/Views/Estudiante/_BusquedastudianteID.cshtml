@@ -1,0 +1,108 @@
+﻿@model List<SistemaEscolar.ViewModels.EstudianteViewModel>
+
+@{
+
+    int tipoUsuario = Convert.ToInt32(Session["TipoUsuario"]);
+
+    if (@Session["TipoUsuario"] != null)
+    {
+        if (tipoUsuario == 1)
+        {
+            Layout = "~/Views/Shared/_Layout.cshtml";
+        }
+        else
+        {
+            Layout = null;
+        }
+    }
+
+    ViewBag.Title = "Detalles del Estudiante";
+    int currentStudent = 0;
+
+}
+
+<div class="registro-detalles">
+
+    @if (tipoUsuario == 2)
+    {
+        <header class="registro-detalle__cabecera">
+            <div class="detalle">
+                <button class="detalle__boton">Atrás</button>
+            </div>
+            <div class="detalle container container--detalles">
+                <p class="detalle__categoria">Detalles del Estudiante</p>
+
+                <div class="detalle__iconos">
+                    <a href="@Url.Action("EditarEstudiante","Estudiante", new { idestudiante = Model[0].IdEstudiante})" class="detalle__editar"> <i class="fa-solid fa-pen-to-square iconos"></i></a>
+                    <a href="#" class="detalle__eliminar"><i class="fa-solid fa-trash"></i></a>
+                </div>
+            </div>
+        </header>
+    }
+
+    <div class="registro-detalle__datos">
+        @foreach (var estudiante in Model)
+        {
+
+            if (currentStudent != estudiante.IdEstudiante)
+            {
+                currentStudent = estudiante.IdEstudiante;
+                <div class="registros-datos__estudiante">
+                    <div class="dato-contenedor">
+                        <label class="dato-contenedor__titulo">Código</label>
+                        <label class="dato-contenedor__modelo">@Html.DisplayFor(iteracion => estudiante.IdEstudiante)</label>
+                    </div>
+                    <div class="dato-contenedor">
+                        <label class="dato-contenedor__titulo">Nombre</label>
+                        <label class="dato-contenedor__modelo">@Html.DisplayFor(iteracion => estudiante.NombreEstudiante)</label>
+                    </div>
+                    <div class="dato-contenedor">
+                        <label class="dato-contenedor__titulo">Apellido</label>
+                        <label class="dato-contenedor__modelo">@Html.DisplayFor(iteracion => estudiante.ApellidoEstudiante)</label>
+                    </div>
+                    <div class="dato-contenedor">
+                        <label class="dato-contenedor__titulo">Correo</label>
+                        <label class="dato-contenedor__modelo">@Html.DisplayFor(iteracion => estudiante.CorreoUsuario)</label>
+                    </div>
+                    <div class="dato-contenedor">
+                        <label class="dato-contenedor__titulo">Tipo de Usuario</label>
+                        <label class="dato-contenedor__modelo">@Html.DisplayFor(iteracion => estudiante.TipoUsuario)</label>
+                    </div>
+
+                </div>
+            }
+        }
+
+        <div class="registro-detalle__materias">
+
+            <table class="tabla">
+                <tr class="tabla__fila">
+                    <th class="tabla__encabezado">Cursos</th>
+                    <th class="tabla__encabezado">Evaluación 1</th>
+                    <th class="tabla__encabezado">Evaluación 2</th>
+                    <th class="tabla__encabezado">Evaluación 3</th>
+                    <th class="tabla__encabezado">Evaluación 4</th>
+                    <th class="tabla__encabezado">Evaluación 5</th>
+                    <th class="tabla__encabezado">Promedio</th>
+                </tr>
+
+                @foreach (var estudiantenotas in Model)
+                {
+                    <tr class="tabla__fila">
+                        <td class="tabla__columna tabla__columna--materias">@Html.DisplayFor(iteracion => estudiantenotas.NombreMateria, new { htmlAttributes = new { @class = "tabla__etiqueta" }, DataFormatString = "{0:0.00}" })</td>
+                        <td class="tabla__columna">@Html.DisplayFor(iteracion => estudiantenotas.Evaluacion1, new { htmlAttributes = new { @class = "tabla__etiqueta" }, DataFormatString = "{0:0.00}" })</td>
+                        <td class="tabla__columna">@Html.DisplayFor(iteracion => estudiantenotas.Evaluacion2, new { htmlAttributes = new { @class = "tabla__etiqueta" }, DataFormatString = "{0:0.00}" })</td>
+                        <td class="tabla__columna">@Html.DisplayFor(iteracion => estudiantenotas.Evaluacion3, new { htmlAttributes = new { @class = "tabla__etiqueta" }, DataFormatString = "{0:0.00}" })</td>
+                        <td class="tabla__columna">@Html.DisplayFor(iteracion => estudiantenotas.Evaluacion4, new { htmlAttributes = new { @class = "tabla__etiqueta" }, DataFormatString = "{0:0.00}" })</td>
+                        <td class="tabla__columna">@Html.DisplayFor(iteracion => estudiantenotas.Evaluacion5, new { htmlAttributes = new { @class = "tabla__etiqueta" }, DataFormatString = "{0:0.00}" })</td>
+                        <td class="tabla__columna">@Html.DisplayFor(iteracion => estudiantenotas.Promedio, new { htmlAttributes = new { @class = "tabla__etiqueta" }, DataFormatString = "{0:0.00}" })</td>
+
+                    </tr>
+                }
+
+            </table>
+
+        </div>
+
+    </div>
+</div>

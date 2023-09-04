@@ -165,8 +165,8 @@ C:\Users\hugoa\OneDrive\Documentos\GitHub\SistemaEscolar\SistemaEscolar\bin\es\S
 C:\Users\hugoa\OneDrive\Documentos\GitHub\SistemaEscolar\SistemaEscolar\bin\es\System.Web.WebPages.resources.dll
 C:\Users\hugoa\OneDrive\Documentos\GitHub\SistemaEscolar\SistemaEscolar\bin\es\System.Web.WebPages.Deployment.resources.dll
 C:\Users\hugoa\OneDrive\Documentos\GitHub\SistemaEscolar\SistemaEscolar\bin\es\System.Web.WebPages.Razor.resources.dll
-C:\Users\hugoa\OneDrive\Documentos\GitHub\SistemaEscolar\SistemaEscolar\obj\Debug\SistemaEscolar.csproj.AssemblyReference.cache
 C:\Users\hugoa\OneDrive\Documentos\GitHub\SistemaEscolar\SistemaEscolar\obj\Debug\SistemaEscolar.csproj.CoreCompileInputs.cache
 C:\Users\hugoa\OneDrive\Documentos\GitHub\SistemaEscolar\SistemaEscolar\obj\Debug\SistemaEscolar.csproj.CopyComplete
 C:\Users\hugoa\OneDrive\Documentos\GitHub\SistemaEscolar\SistemaEscolar\obj\Debug\SistemaEscolar.dll
 C:\Users\hugoa\OneDrive\Documentos\GitHub\SistemaEscolar\SistemaEscolar\obj\Debug\SistemaEscolar.pdb
+C:\Users\hugoa\OneDrive\Documentos\GitHub\SistemaEscolar\SistemaEscolar\obj\Debug\SistemaEscolar.csproj.AssemblyReference.cache
