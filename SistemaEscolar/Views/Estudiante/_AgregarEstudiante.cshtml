@@ -1,21 +1,54 @@
 ﻿@model SistemaEscolar.ViewModels.EstudianteViewModel
-@Styles.Render("~/Content/css")
 
-<div class="modal__contenido" style="border:3px solid red">
-    <div class="formulario">
+@{ 
+    var ViewBagTPusuario = (IEnumerable<SistemaEscolar.Models.TipoUsuario>)ViewBag.TiposDeUsuarios;
+    var ViewBagMaterias = (IEnumerable < SistemaEscolar.Models.Materia>)ViewBag.Materias;
 
-        <div class="formulario-grupo">
-            @Html.LabelFor(model => model.NombreEstudiante, htmlAttributes: new { @class = "formulario-grupo__label" })
-            @Html.EditorFor(model => model.NombreEstudiante, new { htmlAttributes = new { @class = "formulario-grupo__input" } })
-        </div>
-        <div class="formulario-grupo">
-            @Html.LabelFor(model => model.ApellidoEstudiante, htmlAttributes: new { @class = "formulario-grupo__label" })
-            @Html.EditorFor(model => model.ApellidoEstudiante, new { htmlAttributes = new { @class = "formulario-grupo__input" } })
-        </div>
-        <div class="formulario-grupo">
-            @Html.LabelFor(model => model.CorreoUsuario, htmlAttributes: new { @class = "formulario-grupo__label" })
-            @Html.EditorFor(model => model.CorreoUsuario, new { htmlAttributes = new { @class = "formulario-grupo__input" } })
-        </div>
+}
 
+<div class="modal__contenido">
+    <div class="detalle">
+        <button class="detalle__boton">Atrás</button>
     </div>
+
+    @using (Html.BeginForm("AgregarEstudiante", "Estudiante", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="formulario">
+
+            <div class="formulario-grupo">
+                <label class="formulario-grupo__label">Nombre</label>
+                @Html.EditorFor(model => model.NombreEstudiante, new { htmlAttributes = new { @class = "formulario-grupo__input" } })
+            </div>
+            <div class="formulario-grupo">
+                <label class="formulario-grupo__label">Apellido</label>
+                @Html.EditorFor(model => model.ApellidoEstudiante, new { htmlAttributes = new { @class = "formulario-grupo__input" } })
+            </div>
+            <div class="formulario-grupo">
+                <label class="formulario-grupo__label">Correo</label>
+                @Html.EditorFor(model => model.CorreoUsuario, new { htmlAttributes = new { @class = "formulario-grupo__input" } })
+            </div>
+            <div class="formulario-grupo">
+                <!-- Dropdown para los tipos de usuarios -->
+                <label class="formulario-grupo__label">Tipo de Usuario</label>
+                @Html.DropDownListFor(model => model.IdTipoUsuario, new SelectList(ViewBagTPusuario, "IdTipoUsuario", "TipoUsuarios"), "Seleccione un tipo de usuario", new { @class = "DropDownListTipoUsuario" })
+            </div>
+            <div class="formulario-grupo formulario-grupo--materias">
+                <!-- Dropdown para las materias -->
+                <label class="formulario-grupo__label">Materias</label>
+                @Html.DropDownListFor(model => model.IdMateria, new SelectList(ViewBagMaterias, "IdMateria", "NombreMateria"), "Seleccione las materias", new { @class = "formulario-grupo__input" })
+
+                <div class="formulario-grupo">
+                    <h2>Aún No tienes Materias Inscritas</h2>
+                    <p></p>
+                </div>
+            </div>
+
+
+            <div class="formulario-grupo">
+                <input type="submit" name="name" value="Inscribir" />
+            </div>
+        </div>
+    }
 </div>

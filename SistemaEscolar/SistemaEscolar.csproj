@@ -121,11 +121,14 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\EstudianteController.cs" />
+    <Compile Include="Controllers\InscripcionesController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\MateriaController.cs" />
     <Compile Include="Controllers\ProfesorController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\LimpiarCampos.cs" />
     <Compile Include="Models\Materia.cs" />
     <Compile Include="Models\TipoUsuario.cs" />
     <Compile Include="Models\Usuario.cs" />
@@ -137,7 +140,7 @@
     <Compile Include="Services\ClsUsuarioMantenimiento.cs" />
     <Compile Include="Services\Conexion.cs" />
     <Compile Include="ViewModels\EstudianteViewModel.cs" />
-    <Compile Include="ViewModels\ListaMateriasTPUsuarioViewModel.cs" />
+    <Compile Include="ViewModels\EstudianteInscripcionViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="favicon.ico" />
@@ -178,6 +181,9 @@
     <Content Include="Views\Estudiante\_BusquedastudianteID.cshtml" />
     <Content Include="Views\Estudiante\_EditarEstudianteID.cshtml" />
     <Content Include="Views\Estudiante\_AgregarEstudiante.cshtml" />
+    <Content Include="Views\Shared\_Mensaje.cshtml" />
+    <Content Include="Views\Materia\Index.cshtml" />
+    <Content Include="Views\Inscripciones\Index.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

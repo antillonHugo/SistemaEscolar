@@ -58,14 +58,14 @@ $(document).ready(function () {
 let enlace="";
 
 //variable que nos permite extraer el parametro que se envia mediante el elemento @Url.Action
-let searchParams=0;
+let searchParams = 0;
+
+// registro__id es el contenedor que muestra los datos del estudiante mediante su ID o codigo 
+let registro__id = document.querySelector(".registro__id");
 
 //utilizamos la delegación de eventos nos permite que los eventos estén activos desde el inicio y también funcionen en elementos agregados dinámicamente
 //este apartado es unicamnete para elementos que posean el evento click
 document.addEventListener("click", e => {
-
-    // registro__id es el contenedor que muestra los datos del estudiante mediante su ID o codigo 
-    let registro__id = document.querySelector(".registro__id");
 
 
     //elemento que está ubicado en _BusquedastudianteID
@@ -131,9 +131,56 @@ document.addEventListener("click", e => {
     });
 });
 
-//let btnAgregarEstudiante = document.querySelector(".nav__boton-agregar");
+/*
+let DropDownListTipoUsuario = document.querySelector(".DropDownListTipoUsuario");
 
+let contenedorInscripcionMaterias = document.querySelector(".formulario-grupo--materias");
+
+DropDownListTipoUsuario.addEventListener("change", e => {
+    e.stopImmediatePropagation();
+
+    // Obtener el valor seleccionado
+    var selectedValue = DropDownListTipoUsuario.value;
+
+    if (parseInt(selectedValue) === 1) {
+        //alert(selectedValue);
+        contenedorInscripcionMaterias.style.Display = "block";
+    }
+
+});
+*/
+
+// Agrega un oyente de eventos al contenedor principal
+document.addEventListener("change", e => {
+
+    // Obtén una referencia al elemento contenedor
+    let contenedorInscripcionMaterias = document.querySelector(".formulario-grupo--materias");
+
+    // Verifica si el evento se originó en el elemento DropDownListTipoUsuario
+    if (e.target.classList.contains("DropDownListTipoUsuario")) {
+        e.stopImmediatePropagation();
+
+        // Obtener el valor seleccionado
+        var selectedValue = e.target.value;
+
+        if (parseInt(selectedValue) === 1) {
+
+            // Realiza alguna acción cuando se selecciona la opción 1
+            // Aquí puedes mostrar el contenedor de materias u otra acción
+            contenedorInscripcionMaterias.classList.toggle("formulario-grupo--materiasshow");
+        }
+        else {
+            // Realiza alguna acción cuando se selecciona la opción 1
+            // Aquí puedes mostrar el contenedor de materias u otra acción
+            contenedorInscripcionMaterias.classList.toggle("formulario-grupo--materiasshow");
+        }
+    }
+});
+
+//let btnAgregarEstudiante = document.querySelector(".nav__boton-agregar");
 document.querySelector(".nav__boton-agregar").addEventListener("click", e => {
+    //Mostramos el contenedor  que muestra los detalles del estudiante
+    registro__id.classList.toggle("registro__id-mostrar");
 
     $.ajax({
         url: "/Estudiante/AgregarEstudiante",// Ruta al método del controlador
@@ -141,7 +188,7 @@ document.querySelector(".nav__boton-agregar").addEventListener("click", e => {
         dataType: "html", // Tipo de datos esperados
         success: function (data) {
             // Cargar la vista parcial en el contenedor
-            $(".registro__lectura").html(data);
+            $(".registro__id").html(data);
         },
         error: function () {
             alert("Se produjo un error al cargar la vista parcial.");
@@ -149,8 +196,6 @@ document.querySelector(".nav__boton-agregar").addEventListener("click", e => {
     });
 
 });
-
-
 
 //Función que nos permite realizar buscar la información del estudiante mediante su Código
 function BuscarEstudiantesPorIDAJAX(id) {

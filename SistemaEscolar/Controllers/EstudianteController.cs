@@ -8,6 +8,7 @@ using SistemaEscolar.Permisos;
 using SistemaEscolar.Services;
 using SistemaEscolar.Models;
 using SistemaEscolar.ViewModels;
+using SistemaEscolar.Helpers;
 
 namespace SistemaEscolar.Controllers
 {
@@ -32,7 +33,7 @@ namespace SistemaEscolar.Controllers
             objmateria = new ClsMateriaMantenimiento();
         }
 
-        // GET: lista de los Estudiante
+        // GET: lista que se mostrara el estudiante
         public ActionResult Index(int estudiantetId)
         {
             var estudiante = objestudiante.buscarEstudiantesID(estudiantetId);
@@ -64,7 +65,9 @@ namespace SistemaEscolar.Controllers
         //Controlador para realizar filtro de estudiantes
         public ActionResult FiltrarEstudiante(string searchTerm)
         {
-            var registro = objestudiante.FiltrarEstudiante(searchTerm);
+            var filtro=LimpiarCampos.EliminarCaracteresEspeciales(searchTerm);
+
+            var registro = objestudiante.FiltrarEstudiante(filtro);
 
             // Devuelve una vista parcial con los resultados
             return PartialView("_data", registro);
@@ -74,9 +77,7 @@ namespace SistemaEscolar.Controllers
         public ActionResult EditarEstudiante(int estudiantetId)
         {
             var registro = objestudiante.buscarEstudiantesID(estudiantetId);
-             var tpusuarioDisponibles = objtpusuario.obtenerTipoUsuarioDiferenteID(registro[0].IdTipoUsuario);
 
-            ViewBag.Message = tpusuarioDisponibles;
             return PartialView("_EditarEstudianteID", registro);
         }
         
@@ -99,12 +100,26 @@ namespace SistemaEscolar.Controllers
         }
 
         //Controlador para Añadir un estudiante GET
+        [HttpGet]
         public ActionResult AgregarEstudiante()
         {
             var listamaterias = objmateria.ObtenerMaterias();
+            var listatiposdeUsuarios =objtpusuario.ObtenerTiposUsuario();
+
+            ViewBag.TiposDeUsuarios = listatiposdeUsuarios;
+            ViewBag.Materias = listamaterias;
 
             return PartialView("_AgregarEstudiante");
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        //Controlador para Añadir un estudiante POST
+        public ActionResult AgregarEstudiante(EstudianteViewModel inscribirEstudiante)
+        {
+            return PartialView("_Mensaje");
+        }
+
 
         //cerrramos sesión
         public ActionResult CerrarSesion()

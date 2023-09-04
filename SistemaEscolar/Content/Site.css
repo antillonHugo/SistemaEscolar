@@ -35,6 +35,8 @@ body {
 .login {
     height: 100vh;
     width: 100%;
+    /*background-image: linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%);*/
+    background-image: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);
 }
 
 .login-container {
@@ -44,6 +46,8 @@ body {
 
 .login__wrap {
     padding: 1rem;
+    display:flex;
+    justify-content:space-between;
 }
 
 .Login__txt-mail, .login__txt-password {
@@ -123,6 +127,7 @@ body {
 
 .header__name-brand {
     position: relative;
+    padding:1rem;
 }
 
 .header__content {
@@ -148,7 +153,9 @@ body {
 
 /*Estilos para el body de la pagina*/
 .body-content {
-   padding-top:4.5rem;
+    min-height: 100%;
+    padding-top: 4.5rem;
+    background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
 }
 
 /*Estilos para las tarjetas del area del profesor*/
@@ -274,8 +281,16 @@ body {
     overflow: hidden;
 }
 
-.detalle{
-    padding:1rem .5rem;
+.registro-detalle__datos{
+
+}
+
+.registros-datos__estudiante {
+   /* width:80%;*/
+}
+
+.detalle {
+    padding: 1rem .5rem;
 }
 
 .detalle__iconos{
@@ -306,14 +321,6 @@ body {
     pointer-events: none;
 }
 
-.registro-detalle__datos {
-   /*overflow-x: auto;*/ /* Agrega un scroll horizontal cuando sea necesario */
-    /*white-space: nowrap;*/ /* Evita que los elementos se dividan en varias líneas */
-    /* Ajusta el tamaño máximo y otros estilos según tus necesidades */
-    /*height: 35vh;*/
-    /*background-color:blue;*/
-}
-
 .registro-detalle__materias {
     padding: 2rem 0 0 0;
     max-width: 90%;
@@ -328,10 +335,6 @@ body {
 .dato-contenedor__titulo {
     font-weight: bold;
     width:40%;
-}
-
-.registro-detalle__materias {
-    width: 100%; /* Ancho del contenedor principal */
 }
 
 .registro__caja-texto {
@@ -389,16 +392,27 @@ body {
     background-color: rgb(107, 114, 142);
     color:white;
     border-radius: 6px;
-    padding: 1rem 2rem;
+    padding: 1rem 1.5rem;
     border:none;
 }
 
+/*Estilos del formulario Agregar Usuario que esta en la vista _AgregarEstudiante*/
 .modal__contenido {
-    background-color: black;
+    background-color: rgba(77, 77, 77,0.5);
+    min-height: 100vh;
 }
 
 .formulario {
+    margin:1rem 2rem;
     background-color: white;
+}
+
+.formulario-grupo--materias{
+    display:none;
+}
+
+.formulario-grupo--materiasshow {
+    display: block;
 }
 
 /*Estilos para el formulario de los filtros*/
@@ -414,6 +428,14 @@ body {
 .modal{
     display:none;
 }
+
+/*Estilos para los mensajes de manteniento*/
+.mensaje-mantenimiento{
+    font-size:1.5rem;
+    text-align:center;
+    padding-top:6rem;
+}
+
 /*Media Querys*/
 @media screen and (min-width:320px) {
     body {
@@ -426,36 +448,71 @@ body {
         /*background-color: green;*/
     }
 
-
     /*estilos para los elementos del login*/
     .login__wrap {
         padding: 1rem;
     }
 
-    /*Estilos para menú lateral derecho ellipse cual muestra los detalles de los estudiantes, carrera, materias etc*/
-   /* .registro__id {
-        transition: .5s ease;
-        transform: translateX(600px);
+    /*Estilos para las tarjetas del los reistros de estudiantes, profesores etc...*/
+    .categoria, .registro {
+        margin: 0 2.5rem;
     }
 
     .registro__id-mostrar {
         transition: .5s ease;
-        transform: translateX(0);
-    }*/
+        transform: translateX(-30px);
+    }
+}
 
+@media screen and (min-width:768px) {
+    body {
+        /*background-color: deeppink;*/
+    }
 
-    /*.login {
+    /*Estilos para las tarjetas del los reistros de estudiantes, profesores etc...*/
+    .categoria, .registro {
+        margin: 1.5rem 3.5rem;
+    }
+
+    .registro__id {
+        transform: translateX(1000px);
+    }
+
+    .registro__id-mostrar {
+        transition: .5s ease;
+        transform: translateX(-30px);
+    }
+
+    /*Estilos del contenedor que permiten mostrar los detalles de cada registro estudiante vista _BusquedasstudiantesID*/
+    .detalle__iconos {
+        padding-right:5rem;
+    }
+
+    /*Estilos para los mensajes de manteniento*/
+    .mensaje-mantenimiento {
+        font-size: 2.2rem;
+        padding: 10rem 1rem;
+    }
+    
+    /*estilos para los elementos del login*/
+   /* .login {
         height: 100vh;
         width: 100%;
+    }*/
+
+    .login__cajas{
+        padding:.5rem;
     }
 
     .login-container {
-        margin: 3rem;
-        border: .8px solid #cccc;
+        /*margin: 3rem;*/
+        padding: 3rem;
     }
-
+/*
     .login__wrap {
         padding: 1rem;
+        display: flex;
+        justify-content: space-between;
     }
 
     .Login__txt-mail, .login__txt-password {
@@ -470,29 +527,96 @@ body {
         }
 
     .login__submit {
-        padding: .5rem;
+        padding: 1rem;
         width: 100%;
         background-color: rgba(1, 86, 104,.5);
         border: none;
         color: white;
+        border-radius: 6px;
     }
 
-    .login__submit:hover {
-        cursor: pointer;
-    }*/
-}
+        .login__submit:hover {
+            cursor: pointer;
+        }*/
 
-@media screen and (min-width:768px) {
-    body {
-        /*background-color: deeppink;*/
-    }
 }
 
 @media screen and (min-width:960px) {
+
+    /*Estilos para las tarjetas del los reistros de estudiantes, profesores etc...*/
+    .registro {
+        margin: 0;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+    }
+
+
+    .registro__buscador, .registro__buscador-data {
+        width: 25%;
+        margin-top:0;
+        padding: 0 1.5rem;
+    }
+
+    .registro__id {
+        transform: translateX(0);
+        position: static;
+        padding:0;
+        position:relative;
+        top:-13rem;
+        left:17rem;
+        width:65vw;
+        height:auto;
+    }
+
+
+    /*Estilos del contenedor que permiten mostrar los detalles de cada registro estudiante vista _BusquedasstudiantesID*/
+    .detalle__eliminar,.registro-cajatexto__icono {
+        display: none;
+    }
+
+    .detalle__boton {
+        display: none;
+    }
+
+    .detalle__iconos {
+        padding-right: 2rem;
+    }
+
+    .registro-detalle__materias {
+        max-width: 95%;
+    }
+
+
+    /*Estilos para los mensajes de manteniento*/
+    .mensaje-mantenimiento {
+        
+        padding: 10rem 3rem;
+    }
+
+
 }
 
 @media screen and (min-width:1024px) {
+
+    /*Estilos para las tarjetas del los reistros de estudiantes, profesores etc...*/
+    .registro {
+        margin: 0 3.5rem;
+    }
+
+    .registro__id {
+        left: 16rem;
+        width: 61vw;
+    }
 }
 
 @media screen and (min-width:1328px) {
+
+    /*Estilos para las tarjetas del los reistros de estudiantes, profesores etc...*/
+
+    .registro__id {
+        top: -12rem;
+        left: 22rem;
+        width: 61vw;
+    }
 }

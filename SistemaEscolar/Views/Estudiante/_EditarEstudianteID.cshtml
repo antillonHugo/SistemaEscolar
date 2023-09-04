@@ -2,7 +2,6 @@
 
 @{
     Layout = null;
-    var resultado = (IEnumerable<SistemaEscolar.Models.TipoUsuario>)ViewBag.Message;
 }
 
 <div class="registro-detalles">
@@ -41,17 +40,13 @@
                 <label class="dato-contenedor__titulo">Correo</label>
                 <label class="dato-contenedor__modelo">@Html.TextBoxFor(model => Model[0].CorreoUsuario, new { @class = "registro__caja-texto" })</label>
             </div>
-            <div class="dato-contenedor">
-                <label class="dato-contenedor__titulo">Tipo de Usuario</label>
-                @Html.DropDownListFor(model => Model[0].IdTipoUsuario, new SelectList(resultado, "IdTipoUsuario", "TipoUsuarios"), Model[0].TipoUsuario)
-            </div>
 
         </div>
 
         <div class="registro-detalle__materias">
             <table class="tabla">
                 <tr class="tabla__fila">
-                    <th class="tabla__encabezado">Materia</th>
+                    <th class="tabla__encabezado">Cursos</th>
                     <th class="tabla__encabezado">Evaluación 1</th>
                     <th class="tabla__encabezado">Evaluación 2</th>
                     <th class="tabla__encabezado">Evaluación 3</th>

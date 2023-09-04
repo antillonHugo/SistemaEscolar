@@ -6,6 +6,8 @@ using System.Web.Mvc;
 
 using SistemaEscolar.Services;
 using SistemaEscolar.Models;
+using SistemaEscolar.Helpers;
+
 namespace SistemaEscolar.Controllers
 {
     public class LoginController : Controller
@@ -24,33 +26,40 @@ namespace SistemaEscolar.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Index(Usuario usuario)
         {
-            if (!string.IsNullOrWhiteSpace(usuario.CorreoUsuario) && !string.IsNullOrWhiteSpace(usuario.ContrasenaUsuario))
+            //Eliminamos algunos caracteres especiales
+           var correo= LimpiarCampos.EliminarCaracteresEspeciales(usuario.CorreoUsuario);
+           var contrasena = LimpiarCampos.EliminarCaracteresEspeciales(usuario.ContrasenaUsuario);
+
+            if (!string.IsNullOrWhiteSpace(correo) && !string.IsNullOrWhiteSpace(contrasena))
             {
                 //verificamos las credenciales del usuario
-                var respuesta = objUsuario.ValidarCredenciales(usuario.CorreoUsuario.Trim(), usuario.ContrasenaUsuario.Trim());
+                var respuesta = objUsuario.ValidarCredenciales(correo.Trim(), contrasena.Trim());
 
-                //si existe el usuario
-                if (respuesta.Count > 0)
+                if (respuesta !=null)
                 {
-                    //convertimos el elemento 1 de nuestra lista a int que es el idTipoUsuario para dedirigirlo a su área de trabajo
-                    var idusuario = Convert.ToInt32(respuesta[0]);
-                    var idtipo = Convert.ToInt32(respuesta[1]);
-
-                    //creamos varibles de sesión para almacenar la información del suario y hacer accesible en todo el sistema
-                    Session["TipoUsuario"] = idtipo;
-                    Session["Nombreusuario"] = respuesta[2];
-                    Session["idusuario"] = idusuario;
-
-                    //evaluamos si es alumno o profesor
-                    if (idtipo == 1)
+                    //si existe el usuario
+                    if (respuesta.Count > 0)
                     {
-                        return RedirectToAction("Index", "Estudiante",new { estudiantetId = idusuario });
-                        //return RedirectToAction("Index", "Estudiante");
+                        //convertimos el elemento 1 de nuestra lista a int que es el idTipoUsuario para dedirigirlo a su área de trabajo
+                        var idusuario = Convert.ToInt32(respuesta[0]);
+                        var idtipo = Convert.ToInt32(respuesta[1]);
 
-                    }
-                    else
-                    {
-                        return RedirectToAction("Index", "Profesor");
+                        //creamos varibles de sesión para almacenar la información del suario y hacer accesible en todo el sistema
+                        Session["TipoUsuario"] = idtipo;
+                        Session["Nombreusuario"] = respuesta[2];
+                        Session["idusuario"] = idusuario;
+
+                        //evaluamos si es alumno o profesor
+                        if (idtipo == 1)
+                        {
+                            return RedirectToAction("Index", "Estudiante", new { estudiantetId = idusuario });
+                            //return RedirectToAction("Index", "Estudiante");
+
+                        }
+                        else
+                        {
+                            return RedirectToAction("Index", "Profesor");
+                        }
                     }
                 }
 

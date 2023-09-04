@@ -47,25 +47,28 @@
             if (currentStudent != estudiante.IdEstudiante)
             {
                 currentStudent = estudiante.IdEstudiante;
-                <div class="dato-contenedor">
-                    <label class="dato-contenedor__titulo">Código</label>
-                    <label class="dato-contenedor__modelo">@Html.DisplayFor(iteracion => estudiante.IdEstudiante)</label>
-                </div>
-                <div class="dato-contenedor">
-                    <label class="dato-contenedor__titulo">Nombre</label>
-                    <label class="dato-contenedor__modelo">@Html.DisplayFor(iteracion => estudiante.NombreEstudiante)</label>
-                </div>
-                <div class="dato-contenedor">
-                    <label class="dato-contenedor__titulo">Apellido</label>
-                    <label class="dato-contenedor__modelo">@Html.DisplayFor(iteracion => estudiante.ApellidoEstudiante)</label>
-                </div>
-                <div class="dato-contenedor">
-                    <label class="dato-contenedor__titulo">Correo</label>
-                    <label class="dato-contenedor__modelo">@Html.DisplayFor(iteracion => estudiante.CorreoUsuario)</label>
-                </div>
-                <div class="dato-contenedor">
-                    <label class="dato-contenedor__titulo">Tipo de Usuario</label>
-                    <label class="dato-contenedor__modelo">@Html.DisplayFor(iteracion => estudiante.TipoUsuario)</label>
+                <div class="registros-datos__estudiante">
+                    <div class="dato-contenedor">
+                        <label class="dato-contenedor__titulo">Código</label>
+                        <label class="dato-contenedor__modelo">@Html.DisplayFor(iteracion => estudiante.IdEstudiante)</label>
+                    </div>
+                    <div class="dato-contenedor">
+                        <label class="dato-contenedor__titulo">Nombre</label>
+                        <label class="dato-contenedor__modelo">@Html.DisplayFor(iteracion => estudiante.NombreEstudiante)</label>
+                    </div>
+                    <div class="dato-contenedor">
+                        <label class="dato-contenedor__titulo">Apellido</label>
+                        <label class="dato-contenedor__modelo">@Html.DisplayFor(iteracion => estudiante.ApellidoEstudiante)</label>
+                    </div>
+                    <div class="dato-contenedor">
+                        <label class="dato-contenedor__titulo">Correo</label>
+                        <label class="dato-contenedor__modelo">@Html.DisplayFor(iteracion => estudiante.CorreoUsuario)</label>
+                    </div>
+                    <div class="dato-contenedor">
+                        <label class="dato-contenedor__titulo">Tipo de Usuario</label>
+                        <label class="dato-contenedor__modelo">@Html.DisplayFor(iteracion => estudiante.TipoUsuario)</label>
+                    </div>
+
                 </div>
             }
         }
@@ -74,13 +77,13 @@
 
             <table class="tabla">
                 <tr class="tabla__fila">
-                    <th class="tabla__encabezado">Materia</th>
+                    <th class="tabla__encabezado">Cursos</th>
                     <th class="tabla__encabezado">Evaluación 1</th>
                     <th class="tabla__encabezado">Evaluación 2</th>
                     <th class="tabla__encabezado">Evaluación 3</th>
                     <th class="tabla__encabezado">Evaluación 4</th>
                     <th class="tabla__encabezado">Evaluación 5</th>
-                    <th class="tabla__encabezado">NotaFinal</th>
+                    <th class="tabla__encabezado">Promedio</th>
                 </tr>
 
                 @foreach (var estudiantenotas in Model)

@@ -9,8 +9,9 @@ namespace SistemaEscolar.ViewModels
     public class ListaMateriasTPUsuarioViewModel
     {
 
-        public List<TipoUsuario> TiposUsuario { get; set; }
+        public EstudianteViewModel Estudiante { get; set; }
         public List<Materia> Materias { get; set; }
+        public List<TipoUsuario> TiposDeUsuarios { get; set; }
 
 
     }
